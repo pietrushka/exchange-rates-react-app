@@ -1,20 +1,19 @@
-<!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <img src="https://lh3.googleusercontent.com/qpWBa08_tai1hBS6roNj0BrfKe_FKUQUrjt70gx4qYwMCeLjYq-g3yzKt5hOGr4IcuMkUcFdBZ8LYomc9F1KxOcp8SlxVlakvFV4awqApw8S4ioyEXdCe8eSlexRFHdcndFrEogk=w2400" alt="Logo" width="240" height="160">
-  <h3 align="center">Sikory.</h3>
+  <h3 align="center">NBP Exchange Rates</h3>
 
   <p align="center">
-    Fully functional ecommerce shop that sells high-end watches.
+    Exchange rates tracker, using NBP api
     <br />
     <br />
-    <a href="https://sikory.vercel.app/">View Demo</a>
+    <a href="https://nbp-exchange-rates.netlify.app/">View Demo</a>
     <br />
-    <span>If you get 502 error, please refresh the page (free hosting plan)</span>
   </p>
 </p>
 
 ### Built With
+* [React](https://reactjs.org/)
+* [Emotion](https://emotion.sh/docs/introduction)
 * [Jest](https://jestjs.io/)
 * [React Testing Library](https://testing-library.com/)
 
@@ -22,7 +21,7 @@
 
 1. Clone the repo
 ```sh
-git clone https://github.com/pietrushka/ecommerce-watches-next.js.git
+git clone https://github.com/pietrushka/exchange-rates-react-app.git
 ```
 2. Install NPM packages
 ```sh
