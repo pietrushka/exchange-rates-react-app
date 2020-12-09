@@ -1,25 +1,24 @@
-import { useDispatch, useSelector } from 'react-redux'
+import styled from '@emotion/styled'
 
-import { getCurrencies } from './redux/currencies/currienciesActions'
+import CurrenciesSection from './components/CurrenciesSection'
 
 function App () {
-  const dispatch = useDispatch()
-  const state = useSelector(state => state.currencies)
-
-  const fetchData = () => {
-    dispatch(getCurrencies('A'))
-  }
-
   return (
-    <>
-      <button onClick={fetchData}>Fetch table</button>
-      {
-        state.currencies.map(({ currency, code }) => (
-          <p key={code}>{currency}</p>
-        ))
-      }
-    </>
+    <AppContainer>
+      <CurrenciesSection />
+    </AppContainer>
   )
 }
 
 export default App
+
+const AppContainer = styled.div`
+  font-size: 1rem;
+  max-width: 1024px;
+  box-sizing: border-box;
+  margin: .25em;
+  padding: 1em;
+  background-color: var(--white);
+  border-radius: 1em;
+  min-height: calc(100vh - .5em);
+`
