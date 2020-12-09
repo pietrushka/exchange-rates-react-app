@@ -4,21 +4,29 @@ import CurrenciesSection from './components/CurrenciesSection'
 
 function App () {
   return (
-    <AppContainer>
-      <CurrenciesSection />
-    </AppContainer>
+    <PageContainer>
+      <AppContainer>
+        <CurrenciesSection />
+      </AppContainer>
+    </PageContainer>
   )
 }
 
 export default App
 
-const AppContainer = styled.div`
+const PageContainer = styled.div`
   font-size: 1rem;
-  max-width: 1024px;
+  padding: .5em;
+`
+
+const AppContainer = styled.div`
   box-sizing: border-box;
-  margin: .25em;
-  padding: 1em;
   background-color: var(--white);
+  min-height: calc(100vh - 1em);
   border-radius: 1em;
-  min-height: calc(100vh - .5em);
+  font-size: inherit;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1em;
+
 `

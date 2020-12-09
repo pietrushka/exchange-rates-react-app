@@ -6,7 +6,7 @@ export const getCurrencies = (tableType) => async dispatch => {
       type: 'FETCH_CURRENCIES_START'
     })
 
-    const response = await axios.get(`http://api.nbp.pl/api/exchangerates/tables/${tableType}`)
+    const response = await axios.get(`https://api.nbp.pl/api/exchangerates/tables/${tableType}`)
     const currencies = response.data[0].rates
 
     dispatch({
