@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-export const getCurrencies = (tableType) => async dispatch => {
+export const getCurrencies = () => async dispatch => {
   try {
     dispatch({
       type: 'FETCH_CURRENCIES_START'
     })
 
-    const response = await axios.get(`https://api.nbp.pl/api/exchangerates/tables/${tableType}`)
+    const response = await axios.get(`https://api.nbp.pl/api/exchangerates/tables/A`)
     const currencies = response.data[0].rates
 
     dispatch({

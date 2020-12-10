@@ -10,4 +10,5 @@ export default SectionHeading
 
 const StyledHeading = styled.h2`
   margin: 0;
+  line-height: 1em;
 `

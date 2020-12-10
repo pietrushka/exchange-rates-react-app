@@ -59,9 +59,15 @@ const ModalWrapper = styled.div`
   right: 0;
   padding: 1em;
   border-radius: 1em;
+  max-width: 400px;
+
+  @media (min-width: 1024px) {
+    font-size: 1.25rem
+  }
 `
 
 const ModalText = styled.p`
+  font-size: inherit;
   text-align: center;
 `
 
@@ -72,6 +78,7 @@ const BtnsContainer = styled.div`
 `
 
 const AcceptBtn = styled.button`
+  font-size: inherit;
   margin: 0;
   padding: .5em .75em;
   border-radius: .25em;
@@ -89,4 +96,5 @@ const CancelBtn = styled.button`
   color: var(--black);
   font-weight: 600;
   cursor: pointer;
+  font-size: inherit;
 `

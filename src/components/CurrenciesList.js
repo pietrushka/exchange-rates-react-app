@@ -11,11 +11,7 @@ function CurrenciesList ({ currencies, displayClearBtn }) {
       <ListHead>
         <NameTag>Nazwa:</NameTag>
         <PriceTag>Cena:</PriceTag>
-        <BtnContainer displayClearBtn={displayClearBtn}>
-          {
-            displayClearBtn && <ClearBtn>Wyczyść</ClearBtn>
-          }
-        </BtnContainer>
+        <Block/>
       </ListHead>
       <StyledList>
         {
@@ -44,28 +40,29 @@ const ListHead = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 1em auto;
+  margin-top: 1em;;
+  font-size: .9em;
+  color: var(--grey);
 `
 
 const NameTag = styled.span`
+  font-size: inherit;
   width: 40%;
 `
 
 const PriceTag = styled.span`
+  font-size: inherit;
   width: 25%;
   text-align: center;
 `
 
-const BtnContainer = styled.div`
+const Block = styled.div`
   width: 10%;
-  ${({ displayClearBtn }) => !displayClearBtn ? 'visibility: hidden;' : ''}
 `
-
-const ClearBtn = styled.button``
 
 const StyledList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: inherit;
+  font-size: inherit;  
 `

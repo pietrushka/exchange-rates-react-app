@@ -17,7 +17,7 @@ function CurrencyItem ({ currencyData: { currency, code, mid }, isFollowed }) {
           <CurrencyCode>{code}</CurrencyCode>
           <CurrencyName>{currency}</CurrencyName>
         </NameGroup>
-        <PriceSpan>{mid}</PriceSpan>
+        <PriceSpan>{mid} pln</PriceSpan>
         {
           isFollowed ? (
             <StarBtn onClick={() => modalRef.current.open()}>
@@ -48,6 +48,11 @@ const ListItem = styled.li`
   align-items: center;
   justify-content: space-between;
   margin: 1em auto;
+  margin-bottom: 0;
+
+  :first-child {
+    margin-top: .25em;
+  }
 `
 
 const NameGroup = styled.div`
@@ -81,10 +86,13 @@ const StarBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  outline: 0;
+  cursor: pointer;
 
   svg {
     width: 100%;
     height: 100%;
+    max-width: 50px;
+    max-height: 50px;
   }
 `
