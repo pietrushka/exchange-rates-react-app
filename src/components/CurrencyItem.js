@@ -1,7 +1,12 @@
 import styled from '@emotion/styled'
+import { useDispatch } from 'react-redux'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 
-function CurrencyItem ({ currencyData: { currency, code, mid }, isFavorite }) {
+import { addFollowed, removeFollowed } from '../redux/followed/followedActions'
+
+function CurrencyItem ({ currencyData: { currency, code, mid }, isFollowed }) {
+  const dispatch = useDispatch()
+
   return (
     <ListItem>
       <NameGroup>
@@ -9,11 +14,17 @@ function CurrencyItem ({ currencyData: { currency, code, mid }, isFavorite }) {
         <CurrencyName>{currency}</CurrencyName>
       </NameGroup>
       <PriceSpan>{mid}</PriceSpan>
-      <StarContainer>
-        {
-          isFavorite ? <AiFillStar /> : <AiOutlineStar />
-        }
-      </StarContainer>
+      {
+        isFollowed ? (
+          <StarBtn onClick={() => dispatch(removeFollowed(code))}>
+            <AiFillStar />
+          </StarBtn>
+        ) : (
+          <StarBtn onClick={() => dispatch(addFollowed(code))}>
+            <AiOutlineStar />
+          </StarBtn>
+        )
+      }
     </ListItem>
   )
 }
@@ -51,8 +62,17 @@ const PriceSpan = styled.span`
   text-align: center;
 `
 
-const StarContainer = styled.div`
+const StarBtn = styled.button`
   width: 10%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
   svg {
     width: 100%;
     height: 100%;

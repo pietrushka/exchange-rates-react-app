@@ -1,8 +1,12 @@
 import styled from '@emotion/styled'
+import { useSelector } from 'react-redux'
 
 import CurrencyItem from './CurrencyItem'
 
 function CurrenciesList ({ currencies, displayClearBtn }) {
+  const state = useSelector(state => state.followed)
+
+  console.log({ state })
   return (
     <ListContainer>
       <ListHead>
@@ -16,7 +20,13 @@ function CurrenciesList ({ currencies, displayClearBtn }) {
       </ListHead>
       <StyledList>
         {
-          currencies.map(currencyData => <CurrencyItem key={currencyData.code} currencyData={currencyData} />)
+          currencies.map(currencyData => (
+            <CurrencyItem
+              key={currencyData.code}
+              currencyData={currencyData}
+              isFollowed={state.followed.includes(currencyData.code)}
+            />
+          ))
         }
       </StyledList>
     </ListContainer>
