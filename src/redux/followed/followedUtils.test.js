@@ -3,7 +3,9 @@ import {
   removeCurrencyFromFollowed,
   ITEM_NAME,
   getStoredData,
-  storeFollowed
+  storeFollowed,
+  addCurrencyToFollowedData,
+  removeCurrencyFromFollowedData
 } from './followedUtils'
 
 describe('followed', () => {
@@ -15,6 +17,16 @@ describe('followed', () => {
   it('removes currency from followed', () => {
     const newFollowed = removeCurrencyFromFollowed(['USD', 'AUD', 'CAD'], 'AUD')
     expect(newFollowed).toEqual(['USD', 'CAD'])
+  })
+
+  it('adds currencyData to followedData', () => {
+    const newFollowed = addCurrencyToFollowedData([{ code: 'AUD' }, { code: 'CAD' }], { code: 'USD' })
+    expect(newFollowed).toEqual([{ code: 'USD' }, { code: 'AUD' }, { code: 'CAD' }])
+  })
+
+  it('removes currencyData from followedData', () => {
+    const newFollowed = removeCurrencyFromFollowedData([{ code: 'AUD' }, { code: 'CAD' }, { code: 'USD' }], 'AUD' )
+    expect(newFollowed).toEqual([{ code: 'CAD' }, { code: 'USD' }])
   })
 })
 
