@@ -28,18 +28,18 @@ const CurrenciesSectionContainer = styled.section`
   background-color: var(--white);
   border-radius: 1em;
   padding: 1em;
+  box-sizing: border-box;
   
   @media (min-width: 1024px) {
-    box-sizing: border-box;
     overflow-y: auto;
     max-height: calc(100vh - 1em);
     grid-column-start: 1;
     grid-row-start: 1;
 
-    &::-webkit-scrollbar {
+    &::-webkit-scrollbar { /*Chrome and Opera */
       display: none;
     }
-    -ms-overflow-style: none;  /* IE and Edge */
+    &::-ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
 `

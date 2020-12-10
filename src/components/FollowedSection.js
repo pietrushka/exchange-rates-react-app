@@ -34,7 +34,7 @@ function FollowedSection () {
             />
           </>
         ) : (
-          <p>Dodaj waluty do obserwowanych</p>
+          <StyledParagraph>Dodaj waluty do obserwowanych</StyledParagraph>
         )
       }
     </FollowedSectionContainer>
@@ -49,6 +49,19 @@ const FollowedSectionContainer = styled.section`
   padding: 1em;
   overflow-y: auto;
   height: fit-content;
+  box-sizing:border-box;
+  
+  @media (min-width: 1024px) {
+    max-height: calc(100vh - 1em);
+
+    &::-webkit-scrollbar { /*Chrome and Opera */
+      display: none;
+    }
+    
+    &::-ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
 `
 
 const ClearBtn = styled.button`
@@ -73,4 +86,8 @@ const ClearBtn = styled.button`
     width: 1em;
     margin-left: .25em;
   }
+`
+
+const StyledParagraph = styled.p`
+  margin-bottom: 0;
 `

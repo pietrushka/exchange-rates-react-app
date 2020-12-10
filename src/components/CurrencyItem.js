@@ -92,7 +92,7 @@ const StarBtn = styled.button`
   svg {
     width: 100%;
     height: 100%;
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 40px;
+    max-height: 40px;
   }
 `
