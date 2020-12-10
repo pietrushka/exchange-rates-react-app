@@ -2,7 +2,7 @@ import {
   addCurrencyToFollowed,
   removeCurrencyFromFollowed,
   getStoredData,
-  storeFollowed,
+  storeFollowed
 } from './followedUtils'
 
 const storedFollowed = getStoredData().followed

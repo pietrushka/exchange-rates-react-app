@@ -3,7 +3,7 @@ import {
   removeCurrencyFromFollowed,
   ITEM_NAME,
   getStoredData,
-  storeFollowed,
+  storeFollowed
 } from './followedUtils'
 
 describe('followed', () => {
@@ -20,17 +20,17 @@ describe('followed', () => {
 
 describe('followed storage', () => {
   test('stores followed', () => {
-    storeFollowed([]);
-    expect(localStorage.getItem(ITEM_NAME)).toBe('{"followed":[]}');
-  });
+    storeFollowed([])
+    expect(window.localStorage.getItem(ITEM_NAME)).toBe('{"followed":[]}')
+  })
 
   test('reads board', () => {
-    localStorage.setItem(ITEM_NAME, '{"followed":[]}')
-    expect(getStoredData()).toMatchObject({followed: []});
-  });
+    window.localStorage.setItem(ITEM_NAME, '{"followed":[]}')
+    expect(getStoredData()).toMatchObject({ followed: [] })
+  })
 
   test('discards invalid board data', () => {
-    localStorage.setItem(ITEM_NAME, '{"followed":"wrong"}');
-    expect(getStoredData()).toMatchObject({});
-  });
-});
+    window.localStorage.setItem(ITEM_NAME, '{"followed":"wrong"}')
+    expect(getStoredData()).toMatchObject({})
+  })
+})

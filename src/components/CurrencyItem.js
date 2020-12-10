@@ -1,31 +1,41 @@
+import { useRef } from 'react'
 import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 
 import { addFollowed, removeFollowed } from '../redux/followed/followedActions'
+import Modal from './Modal'
 
 function CurrencyItem ({ currencyData: { currency, code, mid }, isFollowed }) {
   const dispatch = useDispatch()
+  const modalRef = useRef()
 
   return (
-    <ListItem>
-      <NameGroup>
-        <CurrencyCode>{code}</CurrencyCode>
-        <CurrencyName>{currency}</CurrencyName>
-      </NameGroup>
-      <PriceSpan>{mid}</PriceSpan>
-      {
-        isFollowed ? (
-          <StarBtn onClick={() => dispatch(removeFollowed(code))}>
-            <AiFillStar />
-          </StarBtn>
-        ) : (
-          <StarBtn onClick={() => dispatch(addFollowed(code))}>
-            <AiOutlineStar />
-          </StarBtn>
-        )
-      }
-    </ListItem>
+    <>
+      <ListItem>
+        <NameGroup>
+          <CurrencyCode>{code}</CurrencyCode>
+          <CurrencyName>{currency}</CurrencyName>
+        </NameGroup>
+        <PriceSpan>{mid}</PriceSpan>
+        {
+          isFollowed ? (
+            <StarBtn onClick={() => modalRef.current.open()}>
+              <AiFillStar />
+            </StarBtn>
+          ) : (
+            <StarBtn onClick={() => dispatch(addFollowed(code))}>
+              <AiOutlineStar />
+            </StarBtn>
+          )
+        }
+      </ListItem>
+      <Modal
+        ref={modalRef}
+        acceptFunction={() => dispatch(removeFollowed(code))}
+        modalText={`Na pewno chcesz usunąć ${code} z obserwowanych?`}
+      />
+    </>
   )
 }
 
