@@ -14,8 +14,9 @@
 ### Built With
 * [React](https://reactjs.org/)
 * [Emotion](https://emotion.sh/docs/introduction)
+* [Redux](https://redux.js.org/)
+* [redux-thunk](https://github.com/reduxjs/redux-thunk)
 * [Jest](https://jestjs.io/)
-* [React Testing Library](https://testing-library.com/)
 
 ### Getting started
 
