@@ -6,7 +6,6 @@ import CurrencyItem from './CurrencyItem'
 function CurrenciesList ({ currencies, displayClearBtn }) {
   const state = useSelector(state => state.followed)
 
-  console.log({ state })
   return (
     <ListContainer>
       <ListHead>

@@ -1,11 +1,15 @@
 import {
   addCurrencyToFollowed,
-  removeCurrencyFromFollowed
+  removeCurrencyFromFollowed,
+  getStoredData,
+  storeFollowed,
 } from './followedUtils'
+
+const storedFollowed = getStoredData().followed
 
 const INITIAL_STATE = {
   loading: false,
-  followed: []
+  followed: storedFollowed || []
 }
 
 const followedReducer = (state = INITIAL_STATE, action) => {
@@ -30,6 +34,7 @@ const followedReducer = (state = INITIAL_STATE, action) => {
       return state
   }
 
+  storeFollowed(newState.followed)
   return newState
 }
 

@@ -1,6 +1,9 @@
 import {
   addCurrencyToFollowed,
-  removeCurrencyFromFollowed
+  removeCurrencyFromFollowed,
+  ITEM_NAME,
+  getStoredData,
+  storeFollowed,
 } from './followedUtils'
 
 describe('followed', () => {
@@ -14,3 +17,20 @@ describe('followed', () => {
     expect(newFollowed).toEqual(['USD', 'CAD'])
   })
 })
+
+describe('followed storage', () => {
+  test('stores followed', () => {
+    storeFollowed([]);
+    expect(localStorage.getItem(ITEM_NAME)).toBe('{"followed":[]}');
+  });
+
+  test('reads board', () => {
+    localStorage.setItem(ITEM_NAME, '{"followed":[]}')
+    expect(getStoredData()).toMatchObject({followed: []});
+  });
+
+  test('discards invalid board data', () => {
+    localStorage.setItem(ITEM_NAME, '{"followed":"wrong"}');
+    expect(getStoredData()).toMatchObject({});
+  });
+});
