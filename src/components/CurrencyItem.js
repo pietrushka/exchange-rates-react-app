@@ -24,7 +24,7 @@ function CurrencyItem ({ currencyData: { currency, code, mid }, isFollowed }) {
               <AiFillStar />
             </StarBtn>
           ) : (
-            <StarBtn onClick={() => dispatch(addFollowed(code))}>
+            <StarBtn onClick={() => dispatch(addFollowed({ currency, code, mid }))}>
               <AiOutlineStar />
             </StarBtn>
           )

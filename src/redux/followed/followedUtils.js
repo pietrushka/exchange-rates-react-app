@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const ITEM_NAME = 'NBP_EXCHANGE_RATES_DATA'
 
 export const addCurrencyToFollowed = (followed, currencyToAdd) => {
@@ -12,6 +14,20 @@ export const addCurrencyToFollowed = (followed, currencyToAdd) => {
 
 export const removeCurrencyFromFollowed = (followed, currencyToRemove) => {
   return followed.filter(followedCurrency => followedCurrency !== currencyToRemove)
+}
+
+export const addCurrencyToFollowedData = (followedData, currencyDataToAdd) => {
+  const existingFollowed = followedData.find(
+    followedCurrency => followedCurrency === currencyDataToAdd
+  )
+
+  if (existingFollowed) return followedData
+
+  return [currencyDataToAdd, ...followedData]
+}
+
+export const removeCurrencyFromFollowedData = (followedData, currencyToRemove) => {
+  return followedData.filter(followedCurrencyData => followedCurrencyData.code !== currencyToRemove)
 }
 
 export const getStoredData = () => {
@@ -52,4 +68,26 @@ export function storeFollowed (followed) {
       followed
     })
   )
+}
+
+export async function getFollowedData (followed) {
+  let data = []
+
+  const getCurrencyData = async (code) => {
+    const res = await axios.get(`https://api.nbp.pl/api/exchangerates/rates/A/${code}`)
+
+    return {
+      code,
+      currency: res.data.currency,
+      mid: res.data.rates[0].mid
+    }
+  }
+
+  const requests = followed.map(code => getCurrencyData(code))
+
+  await Promise.all(requests).then((values) => {
+    data = values
+  })
+
+  return data
 }

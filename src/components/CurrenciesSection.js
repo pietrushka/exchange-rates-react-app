@@ -11,7 +11,7 @@ function CurrenciesSection () {
 
   useEffect(() => {
     dispatch(getCurrencies('A'))
-  }, [])
+  }, [dispatch])
 
   return (
     <>

@@ -1,11 +1,13 @@
 import styled from '@emotion/styled'
 
 import CurrenciesSection from './components/CurrenciesSection'
+import FollowedSection from './components/FollowedSection'
 
 function App () {
   return (
     <PageContainer>
       <AppContainer>
+        <FollowedSection />
         <CurrenciesSection />
       </AppContainer>
     </PageContainer>
