@@ -5,13 +5,13 @@ import CurrencyItem from './CurrencyItem'
 
 function CurrenciesList ({ currencies, displayClearBtn }) {
   const state = useSelector(state => state.followed)
-  
+
   return (
     <ListContainer>
       <ListHead>
         <NameTag>Nazwa:</NameTag>
         <PriceTag>Cena:</PriceTag>
-        <Block/>
+        <Block />
       </ListHead>
       <StyledList>
         {

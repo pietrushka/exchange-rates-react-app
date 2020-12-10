@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from '@emotion/styled'
-import {AiOutlineClear} from 'react-icons/ai'
+import { AiOutlineClear } from 'react-icons/ai'
 
 import { getFollowed, clearFollowed } from '../redux/followed/followedActions'
 import SectionHeading from './SectionHeading'
@@ -21,20 +21,28 @@ function FollowedSection () {
     <FollowedSectionContainer>
       <SectionHeading text='Obserwowane waluty' />
       {
-        state.followedData.length > 0 ? (
-          <>
-            <ClearBtn onClick={() => modalRef.current.open()}>
-              Wyczyść obserwowane <AiOutlineClear/>
-            </ClearBtn>
-            <CurrenciesList currencies={state.followedData} />
-            <Modal
-              ref={modalRef}
-              acceptFunction={() => dispatch(clearFollowed())}
-              modalText={`Na pewno chcesz usunąć wszystkie waluty z obserwowanych?`}
-            />
-          </>
+        state.loading ? (
+          <StyledParagraph>Ładuję ...</StyledParagraph>
         ) : (
-          <StyledParagraph>Dodaj waluty do obserwowanych</StyledParagraph>
+          <>
+            {
+              state.followedData.length > 0 ? (
+                <>
+                  <ClearBtn onClick={() => modalRef.current.open()}>
+                    Wyczyść obserwowane <AiOutlineClear />
+                  </ClearBtn>
+                  <CurrenciesList currencies={state.followedData} />
+                  <Modal
+                    ref={modalRef}
+                    acceptFunction={() => dispatch(clearFollowed())}
+                    modalText='Na pewno chcesz usunąć wszystkie waluty z obserwowanych?'
+                  />
+                </>
+              ) : (
+                <StyledParagraph>Dodaj waluty do obserwowanych</StyledParagraph>
+              )
+            }
+          </>
         )
       }
     </FollowedSectionContainer>
@@ -61,7 +69,6 @@ const FollowedSectionContainer = styled.section`
     &::-ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
-
 `
 
 const ClearBtn = styled.button`

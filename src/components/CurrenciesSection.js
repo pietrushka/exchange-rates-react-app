@@ -17,7 +17,13 @@ function CurrenciesSection () {
   return (
     <CurrenciesSectionContainer>
       <SectionHeading text='Wszystkie waluty' />
-      <CurrenciesList currencies={state.currencies} />
+      {
+        state.loading ? (
+          <StyledParagraph>Ładuję ...</StyledParagraph>
+        ) : (
+          <CurrenciesList currencies={state.currencies} />
+        )
+      }
     </CurrenciesSectionContainer>
   )
 }
@@ -42,4 +48,8 @@ const CurrenciesSectionContainer = styled.section`
     &::-ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+`
+
+const StyledParagraph = styled.p`
+  margin-bottom: 0;
 `

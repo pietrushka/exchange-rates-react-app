@@ -50,7 +50,7 @@ const ListItem = styled.li`
   margin: 1em auto;
   margin-bottom: 0;
 
-  :first-child {
+  :first-of-type {
     margin-top: .25em;
   }
 `
