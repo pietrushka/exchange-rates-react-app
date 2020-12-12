@@ -25,7 +25,7 @@ describe('followed', () => {
   })
 
   it('removes currencyData from followedData', () => {
-    const newFollowed = removeCurrencyFromFollowedData([{ code: 'AUD' }, { code: 'CAD' }, { code: 'USD' }], 'AUD' )
+    const newFollowed = removeCurrencyFromFollowedData([{ code: 'AUD' }, { code: 'CAD' }, { code: 'USD' }], 'AUD')
     expect(newFollowed).toEqual([{ code: 'CAD' }, { code: 'USD' }])
   })
 })

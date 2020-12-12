@@ -1,7 +1,6 @@
 import { forwardRef, useState, useImperativeHandle } from 'react'
 import styled from '@emotion/styled'
-import { motion, AnimatePresence } from "framer-motion";
-
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Modal = forwardRef(({ modalText, acceptFunction }, ref) => {
   const [open, setOpen] = useState(false)
@@ -24,7 +23,7 @@ const Modal = forwardRef(({ modalText, acceptFunction }, ref) => {
     <AnimatePresence>
       {open && (
         <>
-          <ModalBackground 
+          <ModalBackground
             initial={{
               opacity: 0
             }}
@@ -40,7 +39,7 @@ const Modal = forwardRef(({ modalText, acceptFunction }, ref) => {
                 duration: 0.2
               }
             }}
-            onClick={() => setOpen(false)} 
+            onClick={() => setOpen(false)}
           />
           <ModalWrapper
             initial={{

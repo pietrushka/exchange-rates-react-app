@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
+import { motion } from 'framer-motion'
 
 import { addFollowed, removeFollowed } from '../redux/followed/followedActions'
 import Modal from './Modal'
@@ -12,7 +13,26 @@ function CurrencyItem ({ currencyData: { currency, code, mid }, isFollowed }) {
 
   return (
     <>
-      <ListItem>
+      <ListItem
+        initial={{
+          y: 50,
+          opacity: 0
+        }}
+        animate={{
+          y: 0,
+          opacity: 1,
+          transition: {
+            duration: 0.3
+          }
+        }}
+        exit={{
+          y: 50,
+          opacity: 0,
+          transition: {
+            duration: 0.2
+          }
+        }}
+      >
         <NameGroup>
           <CurrencyCode>{code}</CurrencyCode>
           <CurrencyName>{currency}</CurrencyName>
@@ -41,7 +61,7 @@ function CurrencyItem ({ currencyData: { currency, code, mid }, isFollowed }) {
 
 export default CurrencyItem
 
-const ListItem = styled.li`
+const ListItem = styled(motion.li)`
   font-size: inherit;
   width: 100%;
   display: flex;

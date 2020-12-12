@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { useSelector } from 'react-redux'
+import { AnimatePresence } from 'framer-motion'
 
 import CurrencyItem from './CurrencyItem'
 
@@ -14,15 +15,17 @@ function CurrenciesList ({ currencies, displayClearBtn }) {
         <Block />
       </ListHead>
       <StyledList>
-        {
-          currencies.map(currencyData => (
-            <CurrencyItem
-              key={currencyData.code}
-              currencyData={currencyData}
-              isFollowed={state.followed.includes(currencyData.code)}
-            />
-          ))
-        }
+        <AnimatePresence>
+          {
+            currencies.map(currencyData => (
+              <CurrencyItem
+                key={currencyData.code}
+                currencyData={currencyData}
+                isFollowed={state.followed.includes(currencyData.code)}
+              />
+            ))
+          }
+        </AnimatePresence>
       </StyledList>
     </ListContainer>
   )
