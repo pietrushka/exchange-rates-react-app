@@ -1,5 +1,7 @@
 import { forwardRef, useState, useImperativeHandle } from 'react'
 import styled from '@emotion/styled'
+import { motion, AnimatePresence } from "framer-motion";
+
 
 const Modal = forwardRef(({ modalText, acceptFunction }, ref) => {
   const [open, setOpen] = useState(false)
@@ -12,16 +14,51 @@ const Modal = forwardRef(({ modalText, acceptFunction }, ref) => {
   })
 
   const acceptRemoving = () => {
-    acceptFunction()
     setOpen(false)
+    setTimeout(() => {
+      acceptFunction()
+    }, 200)
   }
 
   return (
-    <>
+    <AnimatePresence>
       {open && (
         <>
-          <ModalBackground onClick={() => setOpen(false)} />
-          <ModalWrapper>
+          <ModalBackground 
+            initial={{
+              opacity: 0
+            }}
+            animate={{
+              opacity: 1,
+              transition: {
+                duration: 0.3
+              }
+            }}
+            exit={{
+              opacity: 0,
+              transition: {
+                duration: 0.2
+              }
+            }}
+            onClick={() => setOpen(false)} 
+          />
+          <ModalWrapper
+            initial={{
+              scale: 0
+            }}
+            animate={{
+              scale: 1,
+              transition: {
+                duration: 0.3
+              }
+            }}
+            exit={{
+              scale: 0,
+              transition: {
+                duration: 0.2
+              }
+            }}
+          >
             <ModalText>{modalText}</ModalText>
             <BtnsContainer>
               <AcceptBtn onClick={acceptRemoving}>Tak, usuń</AcceptBtn>
@@ -30,13 +67,13 @@ const Modal = forwardRef(({ modalText, acceptFunction }, ref) => {
           </ModalWrapper>
         </>
       )}
-    </>
+    </AnimatePresence>
   )
 })
 
 export default Modal
 
-const ModalBackground = styled.div`
+const ModalBackground = styled(motion.div)`
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -45,7 +82,7 @@ const ModalBackground = styled.div`
   background: rgba(0, 0, 0, .6);
 `
 
-const ModalWrapper = styled.div`
+const ModalWrapper = styled(motion.div)`
   font-size: 1rem;
   position: fixed;
   box-sizing: border-box;
